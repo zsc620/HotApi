@@ -106,28 +106,6 @@ pnpm install
 pnpm start
 ```
 
-## Docker 部署
-
-> 安装及配置 Docker 将不在此处说明，请自行解决
-
-### 本地构建
-
-```bash
-# 构建
-docker build -t dailyhot-api .
-# 运行
-docker run -p 6688:6688 -d dailyhot-api
-```
-
-### 在线部署
-
-```bash
-# 拉取
-docker pull imsyy/dailyhot-api:latest
-# 运行
-docker run -p 6688:6688 -d imsyy/dailyhot-api:latest
-```
-
 ## Vercel 部署
 
 现已支持 Vercel 部署，无需服务器
@@ -146,111 +124,16 @@ docker run -p 6688:6688 -d imsyy/dailyhot-api:latest
 > 获取数据只需在域名后面加上上方列表中的调用名称即可
 
 ```http
-GET https://api-hot.imsyy.top/bilibili/
+GET https://hotapi.zhangshichang.com/bilibili/
 ```
-
-<details>
-<summary>调用示例</summary>
-
-```json
-{
-    "code": 200,
-    "message": "获取成功",
-    "title": "哔哩哔哩", // 榜单名称
-    "subtitle": "热门榜", // 榜单类别
-    "from": "server", // 此处返回是最新数据还是缓存
-    "total": 100, // 数据总数
-    "updateTime": "2023-03-14T07:40:51.846Z", // 数据获取时间
-    "data": [
-        {
-            "id": "BV1E84y1A7z2",
-            "title": "假如我的校园是一款RPG游戏！",
-            "desc": "所有取景都是在学校里面拍的，都是真实存在的场景哦！",
-            "pic": "http://i2.hdslb.com/bfs/archive/a24e442d0aae6d488db023c4ddcb450e9f2bf5f3.jpg",
-            "owner": {
-                "mid": 424658638,
-                "name": "四夕小田木_已黑化_",
-                "face": "https://i1.hdslb.com/bfs/face/afd9ba47933edc4842ccbeba2891a25465d1cf77.jpg"
-            },
-            "data": {
-                "aid": 610872610,
-                "view": 4178745,
-                "danmaku": 4229,
-                "reply": 5317,
-                "favorite": 91020,
-                "coin": 133596,
-                "share": 46227,
-                "now_rank": 0,
-                "his_rank": 1,
-                "like": 616519,
-                "dislike": 0,
-                "vt": 0,
-                "vv": 0
-            },
-            "url": "https://b23.tv/BV1E84y1A7z2",
-            "mobileUrl": "https://m.bilibili.com/video/BV1E84y1A7z2"
-        },
-        ...
-    ]
-}
-```
-
-</details>
 
 ### 获取榜单最新数据
 
 > 获取最新数据只需在原链接后面加上 `/new`，这样就会直接从服务端拉取最新数据，不会从本地缓存中读取
 
 ```http
-GET https://api-hot.imsyy.top/bilibili/new
+GET https://hotapi.zhangshichang.com/bilibili/new
 ```
-
-<details>
-<summary>调用示例</summary>
-
-```json
-{
-    "code": 200,
-    "message": "获取成功",
-    "title": "哔哩哔哩", // 榜单名称
-    "subtitle": "热门榜", // 榜单类别
-    "total": 100, // 数据总数
-    "updateTime": "2023-03-14T07:40:51.846Z", // 数据获取时间
-    "data": [
-        {
-            "id": "BV1E84y1A7z2",
-            "title": "假如我的校园是一款RPG游戏！",
-            "desc": "所有取景都是在学校里面拍的，都是真实存在的场景哦！",
-            "pic": "http://i2.hdslb.com/bfs/archive/a24e442d0aae6d488db023c4ddcb450e9f2bf5f3.jpg",
-            "owner": {
-                "mid": 424658638,
-                "name": "四夕小田木_已黑化_",
-                "face": "https://i1.hdslb.com/bfs/face/afd9ba47933edc4842ccbeba2891a25465d1cf77.jpg"
-            },
-            "data": {
-                "aid": 610872610,
-                "view": 4178745,
-                "danmaku": 4229,
-                "reply": 5317,
-                "favorite": 91020,
-                "coin": 133596,
-                "share": 46227,
-                "now_rank": 0,
-                "his_rank": 1,
-                "like": 616519,
-                "dislike": 0,
-                "vt": 0,
-                "vv": 0
-            },
-            "url": "https://b23.tv/BV1E84y1A7z2",
-            "mobileUrl": "https://m.bilibili.com/video/BV1E84y1A7z2"
-        },
-        ...
-    ]
-}
-```
-
-</details>
 
 ## 其他
 
